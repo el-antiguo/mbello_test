@@ -44,4 +44,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function compras()
+    {
+        return $this->hasMany(Compra::class);
+    }
+
+    public function noFacturedCompras()
+    {
+        return $this->compras()->whereNull('factura_id');
+    }
+
+    public function facturas()
+    {
+        return $this->hasMany(Factura::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === self::ADMIN_ROLE;
+    }
 }
