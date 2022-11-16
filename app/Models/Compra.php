@@ -9,6 +9,12 @@ class Compra extends Model
 {
     use HasFactory;
 
+    /**@var array<int, string>*/
+    protected $fillable = [
+        'user_id',
+        'producto_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
