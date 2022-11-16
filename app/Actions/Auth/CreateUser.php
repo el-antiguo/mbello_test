@@ -2,10 +2,8 @@
 
 namespace App\Actions\Auth;
 
-use App\Models\Compra;
-use App\Models\Producto;
 use App\Models\User;
-use Session;
+use Hash;
 use Illuminate\Support\Facades\Validator;
 
 final class CreateUser
@@ -25,7 +23,7 @@ final class CreateUser
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role' => user::USER_ROLE
+            'role' => user::USER_ROLE,
         ]);
     }
 }
