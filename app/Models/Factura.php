@@ -11,13 +11,14 @@ class Factura extends Model
 
     /**@var array<int, string>*/
     protected $fillable = [
+        'user_id',
         'sub_total',
         'impuestos_total',
     ];
 
-    public function compras()
+    public function productos()
     {
-        return $this->hasMany(Compra::class);
+        return $this->belongsToMany(Producto::class, 'compras');
     }
 
     public function user()
