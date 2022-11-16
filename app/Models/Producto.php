@@ -16,6 +16,11 @@ class Producto extends Model
         'impuesto',
     ];
 
+    protected $casts = [
+        'precio' => 'float',
+        'impuesto' => 'float',
+    ];
+
     public function compras()
     {
         return $this->hasMany(Compra::class);
