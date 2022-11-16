@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class ProductoSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -26,10 +26,16 @@ class ProductoSeeder extends Seeder
             User::USER_ROLE,
         );
 
-        User::factory()
+        $users = User::factory()
             ->count($userNumber)
             ->create([
                 'role' => $userRoles,
             ]);
+
+        $this->command->info($users->count() . ' usuarios creados');
+
+        foreach ($users->toArray() as $user) {
+            $this->command->info('>> Email:' . $user['email'] . ' Name:' . $user['name']);
+        }
     }
 }
