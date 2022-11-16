@@ -16,8 +16,8 @@ class CreateFacturasTable extends Migration
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->integer('sub_total');
-            $table->integer('impuestos_total');
+            $table->float('sub_total');
+            $table->float('impuestos_total');
             $table->timestamps();
         });
     }
