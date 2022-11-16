@@ -1,4 +1,7 @@
 <div>
+    @if (Session::has('message'))
+        <p>facturas creadas: {{ Session::get('message') }}</p>
+    @endif
     <form method="GET" action="{{route('factura.create')}}">
         <button type="submit">Create Factura</button>
     </form>
