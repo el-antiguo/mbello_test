@@ -13,14 +13,12 @@ final class CreareFacturas
     public function createAll(): void
     {
         $users = User::whereHas('noFacturedCompras')->get();
-        $created = 0;
 
         foreach ($users as $user) {
             $this->createFactura($user);
-            $created++;
         }
 
-        Session::flash('message', $created);
+        Session::flash('message', $users->count());
     }
 
     public function createFactura(?User $user = null): Factura
