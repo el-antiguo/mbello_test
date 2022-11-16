@@ -11,7 +11,7 @@ class Facturera extends Component
 
     public function __construct()
     {
-        $this->facturas = Factura::all();
+        $this->facturas = Factura::orderBy('created_at', 'desc')->get();
     }
 
     public function render()
